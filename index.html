@@ -142,7 +142,7 @@
             padding-top: 12rem;
             padding-bottom: 4rem;
         }
-        
+
         .hero-content {
             max-width: 800px;
         }
@@ -182,7 +182,7 @@
             background: rgba(46, 204, 113, 0.2);
             transform: translateY(-2px);
         }
-        
+
         /* === Terminal Window === */
         .terminal-section {
             margin: 3rem 0;
@@ -260,7 +260,7 @@
             margin-top: 0.2rem;
         }
         
-        /* === Companies I've Hacked === */
+        /* === Organizations Helped Secure === */
         .companies-section {
             padding: 3rem 0;
         }
@@ -272,43 +272,61 @@
             margin-bottom: 2rem;
         }
         
-        .companies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+        .companies-marquee {
             margin-top: 2rem;
+            overflow: hidden;
+            position: relative;
+            border-block: 1px solid var(--border-color);
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
         }
-        
-        .company-card {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 1.5rem;
+
+        .companies-marquee:hover .companies-track {
+            animation-play-state: paused;
+        }
+
+        .companies-track {
             display: flex;
-            flex-direction: column;
+            width: max-content;
+            animation: logo-scroll 34s linear infinite;
+        }
+
+        .companies-group {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding: 1.75rem 2rem;
+        }
+
+        .company-logo-item {
+            min-width: 190px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .company-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-green);
-            box-shadow: var(--shadow-light);
         }
         
         .company-logo {
-            height: 50px;
+            height: 68px;
             width: auto;
-            max-width: 120px;
+            max-width: 190px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            filter: grayscale(1);
+            opacity: 0.78;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
         }
-        
-        .company-name {
-            font-weight: 600;
-            font-size: 1rem;
-            text-align: center;
+
+        .company-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        @keyframes logo-scroll {
+            from {
+                transform: translateX(-50%);
+            }
+            to {
+                transform: translateX(0);
+            }
         }
         
         /* === Featured Findings === */
@@ -632,9 +650,18 @@
                 display: none;
             }
             
-            .companies-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 1rem;
+            .companies-group {
+                gap: 2.5rem;
+                padding: 1.25rem;
+            }
+
+            .company-logo-item {
+                min-width: 145px;
+            }
+
+            .company-logo {
+                height: 56px;
+                max-width: 150px;
             }
             
             .skills-section {
@@ -713,34 +740,30 @@
     </div>
 </section>
 
-<!-- Companies I've Hacked - Updated with your images -->
+<!-- Organizations helped secure -->
 <section id="companies" class="companies-section">
     <div class="container">
-        <h2 class="section-title gradient-text">Companies I've Hacked</h2>
-        <div class="companies-grid">
-            <div class="company-card fade-in">
-                <img src="assets/HackClub1.png" alt="Hack Club" class="company-logo">
-                <div class="company-name">Hack Club</div>
-            </div>
-            
-            <div class="company-card fade-in">
-                <img src="assets/Hilton1.png" alt="Hilton" class="company-logo">
-                <div class="company-name">Hilton</div>
-            </div>
-            
-            <div class="company-card fade-in">
-                <img src="assets/Openai1.png" alt="OpenAI" class="company-logo">
-                <div class="company-name">OpenAI</div>
-            </div>
-            
-            <div class="company-card fade-in">
-                <img src="assets/Playtika11.png" alt="Playtika" class="company-logo">
-                <div class="company-name">Playtika</div>
-            </div>
-            
-            <div class="company-card fade-in">
-                <img src="assets/Sporx.png" alt="Sporx" class="company-logo">
-                <div class="company-name">Sporx</div>
+        <h2 class="section-title gradient-text">Organizations I've Helped Secure</h2>
+        <div class="companies-marquee fade-in" aria-label="Organizations I've helped secure">
+            <div class="companies-track">
+                <div class="companies-group">
+                    <div class="company-logo-item"><img src="assets/HackClub1.png" alt="Hack Club" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Hilton1.png" alt="Hilton" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/OpenAI11.png" alt="OpenAI" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/meesho.png" alt="Meesho" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/uxcam.png" alt="UXCam" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Playtika11.png" alt="Playtika" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Sporx.png" alt="Sporx" class="company-logo"></div>
+                </div>
+                <div class="companies-group" aria-hidden="true">
+                    <div class="company-logo-item"><img src="assets/HackClub1.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Hilton1.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/OpenAI11.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/meesho.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/uxcam.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Playtika11.png" alt="" class="company-logo"></div>
+                    <div class="company-logo-item"><img src="assets/Sporx.png" alt="" class="company-logo"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -786,47 +809,14 @@
                 
                 <!-- Finding 3 -->
                 <div class="finding-card fade-in">
-                    <span class="finding-badge badge-critical">CRITICAL</span>
-                    <h3 class="finding-title">Stored XSS to Account Control</h3>
-                    <div class="finding-company">Sporx (VDP)</div>
-                    <p class="finding-desc">
-                        Stored XSS in user profile fields (name, address) leading to cookie theft and 
-                        full account compromise on major sports social media platform.
-                    </p>
-                    <div class="finding-tags">
-                        <span class="finding-tag">Stored XSS</span>
-                        <span class="finding-tag">Cookie Theft</span>
-                        <span class="finding-tag">Client-Side</span>
-                        <span class="finding-tag">DOM</span>
-                    </div>
-                </div>
-                
-                <!-- Finding 4 -->
-                <div class="finding-card fade-in">
-                    <span class="finding-badge badge-critical">CRITICAL • CVSS 9.1</span>
-                    <h3 class="finding-title">Production Config Leak</h3>
-                    <div class="finding-company">Playtika (Slotomania)</div>
-                    <p class="finding-desc">
-                        Custom dork discovery leading to exposure of 25+ API keys, Facebook App IDs, 
-                        and production credentials through misconfigured cloud storage.
-                    </p>
-                    <div class="finding-tags">
-                        <span class="finding-tag">Information Disclosure</span>
-                        <span class="finding-tag">API Keys</span>
-                        <span class="finding-tag">Reconnaissance</span>
-                        <span class="finding-tag">Cloud</span>
-                    </div>
-                </div>
-
-                <!-- Finding 5 -->
-                <div class="finding-card fade-in">
-                    <span class="finding-badge badge-medium">MEDIUM • RESEARCH</span>
+                    <span class="finding-badge badge-medium">MEDIUM - RESEARCH</span>
                     <h3 class="finding-title">API Cache / Limit Behavior</h3>
                     <div class="finding-company">Meesho</div>
                     <p class="finding-desc">
                         Identified a reviews API accepting unusually large limit values. Further testing
                         showed cache-bypass behavior when varying request parameters, potentially increasing
-                        backend processing load despite caching protections.
+                        backend processing load despite caching protections. The report appeared valid, though
+                        the program response did not reflect the impact reported by the community.
                     </p>
                     <div class="finding-tags">
                         <span class="finding-tag">API Security</span>
@@ -836,9 +826,26 @@
                     </div>
                 </div>
 
-                <!-- Finding 6 -->
+                <!-- Finding 4 -->
                 <div class="finding-card fade-in">
-                    <span class="finding-badge badge-high">HIGH • RESEARCH</span>
+                    <span class="finding-badge badge-high">HIGH - IDOR</span>
+                    <h3 class="finding-title">Multiple Cross-Tenant IDORs</h3>
+                    <div class="finding-company">UXCam</div>
+                    <p class="finding-desc">
+                        Found multiple cross-tenant IDOR issues where tenant-scoped resources could be
+                        accessed or modified across account boundaries through insufficient authorization checks.
+                    </p>
+                    <div class="finding-tags">
+                        <span class="finding-tag">IDOR</span>
+                        <span class="finding-tag">Cross-Tenant Access</span>
+                        <span class="finding-tag">Authorization</span>
+                        <span class="finding-tag">API Security</span>
+                    </div>
+                </div>
+
+                <!-- Finding 5 -->
+                <div class="finding-card fade-in">
+                    <span class="finding-badge badge-high">HIGH - RESEARCH</span>
                     <h3 class="finding-title">OTP Flow Validation Weakness</h3>
                     <div class="finding-company">OYO</div>
                     <p class="finding-desc">
@@ -851,6 +858,23 @@
                         <span class="finding-tag">Business Logic</span>
                         <span class="finding-tag">OTP Flow</span>
                         <span class="finding-tag">Rate Limiting</span>
+                    </div>
+                </div>
+
+                <!-- Finding 6 -->
+                <div class="finding-card fade-in">
+                    <span class="finding-badge badge-critical">CRITICAL - CVSS 9.1</span>
+                    <h3 class="finding-title">Production Config Leak</h3>
+                    <div class="finding-company">Playtika (Slotomania)</div>
+                    <p class="finding-desc">
+                        Custom dork discovery leading to exposure of 25+ API keys, Facebook App IDs,
+                        and production credentials through misconfigured cloud storage.
+                    </p>
+                    <div class="finding-tags">
+                        <span class="finding-tag">Information Disclosure</span>
+                        <span class="finding-tag">API Keys</span>
+                        <span class="finding-tag">Reconnaissance</span>
+                        <span class="finding-tag">Cloud</span>
                     </div>
                 </div>
             </div>
@@ -916,82 +940,6 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card fade-in">
-                    <span class="project-badge">OPEN SOURCE</span>
-                    <h3 class="project-title">Dorking-Duck</h3>
-                    <p class="project-desc">
-                        Google Dorks generator with 150+ curated dorks for finding APIs, cloud exposures, 
-                        directory listings, admin panels, and sensitive files for bug bounty research.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">OSINT</span>
-                        <span class="tech-tag">Reconnaissance</span>
-                        <span class="tech-tag">CLI</span>
-                    </div>
-                    <a href="https://github.com/Ranveerrrrr/Dorking-Duck" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card fade-in">
-                    <span class="project-badge">SECURITY TOOL</span>
-                    <h3 class="project-title">Ghostmark</h3>
-                    <p class="project-desc">
-                        Command-line image forensics toolkit for metadata extraction, steganography detection, 
-                        image hashing, and password protection detection.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Forensics</span>
-                        <span class="tech-tag">Image Analysis</span>
-                        <span class="tech-tag">CLI</span>
-                    </div>
-                    <a href="https://github.com/cracking-bytes/Ghostmark" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card fade-in">
-                    <span class="project-badge">EDUCATION</span>
-                    <h3 class="project-title">Raina</h3>
-                    <p class="project-desc">
-                        Cybersecurity awareness web toolkit featuring email breach checks, hash generators, 
-                        link analyzers, and phishing awareness tools for educational purposes.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">Security Education</span>
-                        <span class="tech-tag">Web</span>
-                    </div>
-                    <a href="https://github.com/Ranveerrrrr/Raina" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card fade-in">
-                    <span class="project-badge">LEARNING</span>
-                    <h3 class="project-title">Exploit-Diary</h3>
-                    <p class="project-desc">
-                        Collection of notes and Python scripts for web vulnerabilities including SQLi, XSS, 
-                        CSRF, and DOM-based attacks based on PortSwigger learning.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Security Notes</span>
-                        <span class="tech-tag">Learning</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-                    <a href="https://github.com/Ranveerrrrr/Exploit-Diary" target="_blank" class="project-link">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card fade-in">
                     <span class="project-badge">SECURITY TOOL</span>
                     <h3 class="project-title">Blind-XSSTrace</h3>
                     <p class="project-desc">
@@ -1004,7 +952,121 @@
                         <span class="tech-tag">Research</span>
                         <span class="tech-tag">Open Source</span>
                     </div>
-                    <a href="https://github.com/Ranveerrrrr/Blind-XSSTrace" target="_blank" class="project-link">
+                    <a href="https://github.com/Bugatsec/Blind-XSSTrace" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">EDUCATION</span>
+                    <h3 class="project-title">Raina</h3>
+                    <p class="project-desc">
+                        Cybersecurity awareness web toolkit featuring email breach checks, hash generators,
+                        link analyzers, and phishing awareness tools for educational purposes.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Security Education</span>
+                        <span class="tech-tag">Web</span>
+                    </div>
+                    <a href="https://github.com/Bugatsec/Raina" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">SECURITY TOOL</span>
+                    <h3 class="project-title">Ghostmark</h3>
+                    <p class="project-desc">
+                        Command-line image forensics toolkit for metadata extraction, steganography detection,
+                        image hashing, and password protection detection.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Forensics</span>
+                        <span class="tech-tag">Image Analysis</span>
+                        <span class="tech-tag">CLI</span>
+                    </div>
+                    <a href="https://github.com/cracking-bytes/Ghostmark" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">LEARNING</span>
+                    <h3 class="project-title">Exploit-Diary</h3>
+                    <p class="project-desc">
+                        Collection of notes and Python scripts for web vulnerabilities including SQLi, XSS,
+                        CSRF, and DOM-based attacks based on PortSwigger learning.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Security Notes</span>
+                        <span class="tech-tag">Learning</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                    <a href="https://github.com/Bugatsec/Exploit-Diary" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">SECURITY TOOL</span>
+                    <h3 class="project-title">API-Key-Validator</h3>
+                    <p class="project-desc">
+                        Open-source utility for validating exposed API keys during security research,
+                        helping triage leaked credentials and confirm whether reported keys are active.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">API Security</span>
+                        <span class="tech-tag">Credential Testing</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Open Source</span>
+                    </div>
+                    <a href="https://github.com/Bugatsec/API-Key-Validator" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">SECURITY TOOL</span>
+                    <h3 class="project-title">source-map-reconstruct</h3>
+                    <p class="project-desc">
+                        Tooling for rebuilding readable frontend source from exposed source maps, helping
+                        researchers review client-side logic, routes, and bundled JavaScript during recon.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Source Maps</span>
+                        <span class="tech-tag">Reconnaissance</span>
+                        <span class="tech-tag">Security Testing</span>
+                    </div>
+                    <a href="https://github.com/Bugatsec/source-map-reconstruct" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card fade-in">
+                    <span class="project-badge">OPEN SOURCE</span>
+                    <h3 class="project-title">Dorking-Duck</h3>
+                    <p class="project-desc">
+                        Google Dorks generator with 150+ curated dorks for finding APIs, cloud exposures,
+                        directory listings, admin panels, and sensitive files for bug bounty research.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OSINT</span>
+                        <span class="tech-tag">Reconnaissance</span>
+                        <span class="tech-tag">CLI</span>
+                    </div>
+                    <a href="https://github.com/Bugatsec/Dorking-Duck" target="_blank" class="project-link">
                         <i class="fab fa-github"></i> View on GitHub
                     </a>
                 </div>
@@ -1043,12 +1105,12 @@
             <div class="contact-grid">
                 
                 
-                <a href="https://github.com/Ranveerrrrr" target="_blank" class="contact-card fade-in">
+                <a href="https://github.com/Bugatsec" target="_blank" class="contact-card fade-in">
                     <div class="contact-icon">
                         <i class="fab fa-github"></i>
                     </div>
                     <h3 class="contact-title">GitHub</h3>
-                    <p class="contact-detail">@Ranveerrrrr</p>
+                    <p class="contact-detail">@Bugatsec</p>
                 </a>
                 
                 <a href="https://bugatsec.medium.com" target="_blank" class="contact-card fade-in">
@@ -1095,6 +1157,36 @@
         </div>
     </footer>
 
+<script type="text/javascript" defer="">
+(function( appKey, opts ) {
+	window.uxc = {
+		__t: [],
+		__ak: appKey,
+		__o: opts,
+		event: function( n, p ) {
+			this.__t.push( [ 'event', n, p ] )
+		},
+		setUserIdentity: function( i ) {
+			this.__t.push( [ 'setUserIdentity', i ] )
+		},
+		setUserProperty: function( k, v ) {
+			this.__t.push( [ 'setUserProperty', k, v ] )
+		},
+		setUserProperties: function( p ) {
+			this.__t.push( [ 'setUserProperties', p ] )
+		},
+	};
+	var head = document.getElementsByTagName('head')[0];
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.src = '//websdk-recording.uxcam.com/index.js';
+	script.async = true;
+	script.defer = true;
+	script.id = 'uxcam-web-sdk';
+	script.crossOrigin = 'anonymous';
+	head.appendChild(script);
+} )( '2zkfw8rak7sioff-us', {} );
+</script>
     <script>
         // Scroll animation
         const observerOptions = {
